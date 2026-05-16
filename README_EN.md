@@ -4,7 +4,7 @@
 
 ThemeIndexAnnualReportExtractor is a Python toolkit for extracting theme-index evidence from U.S. annual report HTML files. It prepares business descriptions, segment disclosures, revenue breakdowns, revenue recognition evidence, and theme-related clues, then can optionally call an OpenAI-compatible LLM endpoint to normalize the evidence into JSON and Excel outputs.
 
-This repository contains reusable code, templates, and documentation only. It does not include real annual reports, company lists, API keys, model responses, logs, or generated workbooks.
+The tool is intended for users who already have annual report HTML files. A typical workflow is to first generate traceable evidence, then use an LLM to turn that evidence into structured fields, and finally review the company-level JSON and Excel outputs.
 
 ## Features
 
@@ -16,7 +16,7 @@ This repository contains reusable code, templates, and documentation only. It do
 - Generates a per-company JSON evidence package for LLM input and human review.
 - Optionally calls an OpenAI-compatible endpoint, such as Ark/Doubao, to produce structured JSON and Excel results.
 - Keeps company-level outputs separate for easier audit and reruns.
-- Provides strict `.gitignore` rules to avoid publishing private data.
+- Supports small-batch tests, named-company runs, reruns, and progress reports.
 
 ## Project Layout
 
@@ -32,12 +32,8 @@ ThemeIndexAnnualReportExtractor/
     keyword_feedback_template.json
     README.md
   data/
-    downloads/
-      .gitkeep
-  outputs/
-    .gitkeep
-  docs/
-    PRIVACY.md
+    downloads/                     # Put annual report HTML files here
+  outputs/                         # Output workbooks and run reports
   requirements.txt
   README.md
   README_EN.md
@@ -66,7 +62,7 @@ data/downloads/
     2024_Form_20-F.html
 ```
 
-Each company folder should contain at least one `.html` or `.htm` file. If a folder contains multiple HTML files, the scripts try to select the most likely annual report, but it is better to keep the latest complete annual report only.
+Each company folder should contain at least one `.html` or `.htm` file. If a folder contains multiple HTML files, the scripts try to select the most likely annual report, but it is better to keep the latest complete annual report only. The folder name is used as the default company name.
 
 ## Step 1: Rule-Based Extraction
 
@@ -177,21 +173,9 @@ The model result contains:
 
 ## Keyword Extensions
 
-Use `templates/keyword_overrides.json` for reviewed, reusable keyword additions. Keep terms short and stable. Avoid company-specific names, person names, broad risk words, and private notes.
+Use `templates/keyword_overrides.json` for reviewed, reusable keyword additions. Keep terms short and stable. Avoid company-specific names, person names, and broad risk words.
 
-Use `templates/keyword_feedback_template.json` when asking a model to suggest missing keywords. The model should only provide suggestions; code changes should remain human-reviewed.
-
-## Privacy
-
-Before publishing, make sure you do not commit:
-
-- Annual report HTML/PDF files.
-- Internal screening workbooks or company mapping files.
-- API keys or `.env` files.
-- Model responses, logs, JSONL progress files, or generated Excel outputs.
-- Files under `data/downloads/` or `outputs/`, except `.gitkeep`.
-
-See [docs/PRIVACY.md](docs/PRIVACY.md) for the release checklist.
+Use `templates/keyword_feedback_template.json` when asking a model to suggest missing keywords. The model provides suggestions; users can review and add stable phrases to the override file.
 
 ## Notes
 
@@ -199,9 +183,3 @@ See [docs/PRIVACY.md](docs/PRIVACY.md) for the release checklist.
 - SEC filings vary widely. 40-F, 10-K/A, 20-F/A, and NT filings may not contain complete business or financial statement content.
 - LLM output should be sampled and reviewed before production use.
 - Run a small batch first, then scale up.
-
-## Suggested Repository Description
-
-```text
-Extract structured theme-index evidence from annual report HTML files, with optional LLM-assisted field normalization.
-```

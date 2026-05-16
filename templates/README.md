@@ -23,8 +23,8 @@ Recommended rules:
 - Keep additions short and reusable.
 - Avoid company-specific names.
 - Avoid broad risk words that appear in many unrelated filings.
-- Do not add private project notes or internal classifications.
-- Review model-suggested keywords manually before committing.
+- Keep project-specific notes outside the reusable keyword template.
+- Review model-suggested keywords manually before adding them.
 
 ## `keyword_feedback_template.json`
 
@@ -38,4 +38,4 @@ Recommended workflow:
 4. Manually review suggested keywords.
 5. Add only stable, reusable terms to `keyword_overrides.json`.
 
-Do not commit generated feedback that contains company-private evidence or long annual report excerpts.
+Generated feedback may contain long annual report excerpts, so it is usually best kept with the run outputs instead of the reusable template folder.
