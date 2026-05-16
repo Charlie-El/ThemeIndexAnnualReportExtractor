@@ -1,0 +1,51 @@
+{
+  "field_groups": {
+    "segment": [],
+    "revenue_table": [],
+    "business": [
+      "business overview"
+    ],
+    "mda": [],
+    "revenue_recognition": []
+  },
+  "table_keywords": [],
+  "theme_dictionary": {
+    "THEME_AI": {
+      "core": [],
+      "related": []
+    },
+    "THEME_SEMICONDUCTOR": {
+      "core": [],
+      "related": []
+    },
+    "THEME_ROBOTICS": {
+      "core": [],
+      "related": []
+    },
+    "THEME_SPACE": {
+      "core": [],
+      "related": []
+    },
+    "THEME_GEOPOLITICAL_RISK": {
+      "core": [],
+      "related": []
+    },
+    "THEME_ENERGY": {
+      "core": [],
+      "related": []
+    },
+    "THEME_MINERALS": {
+      "core": [],
+      "related": []
+    },
+    "THEME_BIOMEDICAL": {
+      "core": [],
+      "related": []
+    }
+  },
+  "metadata": {
+    "description": "由模型反馈脚本写入的可审核关键词扩展。theme_index_extractor.py 会自动加载本文件。",
+    "last_updated": "2026-05-14 20:30:12",
+    "review_note": "已人工清理：移除中文字段泛词和来自异常源文件风险提示的过宽主题词。"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "purpose": "用于大模型在证据不足时反馈可审核的关键词建议。模型只输出建议，不直接修改代码。",
+  "rules": [
+    "只返回合法 JSON，不输出 Markdown。",
+    "不得编造年报中不存在的内容。",
+    "每条建议必须包含原文短证据 evidence_quote。",
+    "keyword_or_regex 必须尽量短、可复用、避免公司专属名称。",
+    "如果是公司名称、董事姓名、风险提示空泛词，不要作为关键词建议。",
+    "如果源文件是 NT 通知、仅 Part III 修订或明确无财务报表，应优先标记 missing_fields，不要强行建议收入关键词。"
+  ],
+  "schema": {
+    "company_name": "",
+    "report_file": "",
+    "extraction_status": "完整提取/部分提取/无法提取",
+    "missing_fields": [
+      "main_business_desc",
+      "segments",
+      "revenue_breakdown",
+      "revenue_recognition",
+      "theme_mapping"
+    ],
+    "suggested_keywords": [
+      {
+        "field_group": "business/segment/revenue_table/revenue_recognition/theme",
+        "keyword_or_regex": "",
+        "keyword_type": "core/related/excluded",
+        "reason_cn": "",
+        "evidence_quote": "",
+        "source_section": "business/MDA/notes/segment/table/unknown",
+        "confidence": 0.0
+      }
+    ],
+    "suggested_theme_keywords": [
+      {
+        "theme_id": "THEME_AI/THEME_SEMICONDUCTOR/THEME_ROBOTICS/THEME_SPACE/THEME_GEOPOLITICAL_RISK/THEME_ENERGY/THEME_MINERALS/THEME_BIOMEDICAL",
+        "keyword": "",
+        "keyword_type": "core/related/excluded",
+        "evidence_quote": "",
+        "reason_cn": "",
+        "confidence": 0.0
+      }
+    ],
+    "suspected_missing_sections": [],
+    "notes_cn": ""
+  }
+}

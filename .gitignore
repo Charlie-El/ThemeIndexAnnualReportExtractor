@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Local environment and secrets
+.env
+.env.*
+*.key
+*.pem
+*.p12
+
+# User data and generated outputs
+data/downloads/*
+!data/downloads/.gitkeep
+outputs/*
+!outputs/.gitkeep
+
+# Annual reports, source datasets, model outputs and generated workbooks
+*.html
+*.htm
+*.pdf
+*.xlsx
+*.xlsm
+*.xls
+*.csv
+*.jsonl
+*.log
+
+# Keep reviewed template JSON files
+!templates/*.json
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
